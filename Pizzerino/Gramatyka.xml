@@ -1,0 +1,192 @@
+﻿<grammar version="1.0" xml:lang="pl-pl" root="rootRule"
+         xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="rootRule">
+
+    <!-- Komendy -->
+    <item repeat="0-1">
+      <ruleref uri="#commands"/>
+      <tag>out.command=rules.latest();</tag>
+    </item>
+    
+    <!-- Potwierdzenie -->
+    <item repeat="0-1">
+      <ruleref uri="#confirm"/>
+      <tag>out.confirm=rules.latest();</tag>
+    </item>
+
+
+    <!-- Adres -->
+    <item repeat="0-1">
+      
+      <ruleref uri="#street"/>
+      <tag>out.street=rules.latest();</tag>
+
+      <ruleref uri="#number"/>
+      <tag>out.number1=rules.latest();</tag>
+
+      <item repeat="0-1">
+        przez
+      <ruleref uri="#number"/>
+      <tag>out.number2=rules.latest();</tag>
+      </item>
+
+    </item>
+
+    <!-- Dodawanie pizzy -->
+    <item repeat="0-1">
+      <item>Dodaj</item>
+      <ruleref uri="#number"/>
+      <tag>out.pizzaNumber=rules.latest();</tag>
+    </item>
+
+    <!-- Podawanie numeru telefonu -->
+    <item repeat="0-1">
+
+      <ruleref uri="#number"/>
+      <tag>out.number1=rules.latest();</tag>
+      <ruleref uri="#number"/>
+      <tag>out.number2=rules.latest();</tag>
+      <ruleref uri="#number"/>
+      <tag>out.number3=rules.latest();</tag>
+      <ruleref uri="#number"/>
+      <tag>out.number4=rules.latest();</tag>
+      <ruleref uri="#number"/>
+      <tag>out.number5=rules.latest();</tag>
+      <ruleref uri="#number"/>
+      <tag>out.number6=rules.latest();</tag>
+      <ruleref uri="#number"/>
+      <tag>out.number7=rules.latest();</tag>
+      <ruleref uri="#number"/>
+      <tag>out.number8=rules.latest();</tag>
+      <ruleref uri="#number"/>
+      <tag>out.number9=rules.latest();</tag>
+
+    </item>
+    
+  </rule>
+
+
+  
+  
+  <rule id="street">
+    <one-of>
+      <item>
+        kartezjusza<tag>out="kartezjusza";</tag>
+      </item>
+      <item>
+        kocjana<tag>out="kocjana";</tag>
+      </item>
+    </one-of>
+  </rule>
+
+
+
+
+  <rule id="confirm">
+    <one-of>
+
+      <item>
+        tak<tag>out="tak";</tag>
+      </item>
+
+      <item>
+        nie<tag>out="nie";</tag>
+      </item>
+
+
+    </one-of>
+  </rule>
+
+  <rule id="commands">
+    <one-of>
+
+      <item>
+        zamawiam<tag>out="dalej";</tag>
+      </item>
+
+      <item>
+        dalej<tag>out="dalej";</tag>
+      </item>
+
+      <item>
+        koniec<tag>out="koniec";</tag>
+      </item>
+      
+      <item>
+        pomoc<tag>out="pomoc";</tag>
+      </item>
+          
+    </one-of>
+  </rule>
+
+
+
+  <rule id="number">
+    <one-of>
+      <item>
+        jeden <tag> out="1";</tag>
+      </item>
+      <item>
+        dwa <tag> out="2";</tag>
+      </item>
+      <item>
+        trzy <tag> out="3";</tag>
+      </item>
+      <item>
+        cztery <tag> out="4";</tag>
+      </item>
+      <item>
+        pięć <tag> out="5";</tag>
+      </item>
+      <item>
+        sześć <tag> out="6";</tag>
+      </item>
+      <item>
+        sieden <tag> out="7";</tag>
+      </item>
+      <item>
+        osiem <tag> out="8";</tag>
+      </item>
+      <item>
+        dziewięć <tag> out="9";</tag>
+      </item>
+      <item>
+        zero <tag> out="0";</tag>
+      </item>
+      <item>
+        jedenaście <tag> out="11";</tag>
+      </item>
+      <item>
+        dwanaście <tag> out="12";</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="pizza">
+    <one-of>
+      <item>
+        klasyczna<tag>out="klasyczna";</tag>
+      </item>
+
+      <item>
+        hawajska<tag>out="kocjana";</tag>
+      </item>
+
+      <item>
+        hawajska<tag>out="kocjana";</tag>
+      </item>
+
+      <item>
+        hawajska<tag>out="kocjana";</tag>
+      </item>
+
+      <item>
+        hawajska<tag>out="kocjana";</tag>
+      </item>
+    </one-of>
+  </rule>
+  
+  
+
+</grammar>
